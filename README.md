@@ -1,4 +1,4 @@
-# cloudformation-dev-staging-prod-networks
+# Cloudformation Dev-Staging and Production VPCs (subnets, network ACLs, route tables, and security groups)
 Cloudformation templates to set up a dev-staging and a production network in AWS. Both dev-staging and production have public server subnets and private data subnets, both public and private also have an A and B versions on different AZs (A is one AZ, B is a different AZ). So you have public subnet A, public subnet B, private subnet A, private subnet B, for each VPC. 
 
 <p align="center">
@@ -45,5 +45,6 @@ Note you'll need a tunnel (bastion) ec2 to access databases in the private data.
 3. Repeat step 2 for dev-staging (see run.sh for reference)
 4. Update/replace prod-security-group-server with prod-security-group-server-UPDATE
    (prod-security-group-server-UPDATE has one extra rule that references prod-security-group-data. We do it this way to avoid cyclic dependencies)
+5. Repeat step 4 for dev-staging
 
 
