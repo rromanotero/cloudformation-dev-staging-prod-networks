@@ -1,9 +1,9 @@
 # Cloudformation Dev-Staging and Production VPCs (subnets, network ACLs, route tables, and security groups)
-Cloudformation templates to set up a dev-staging and a production network in AWS. Both dev-staging and production have public server subnets and private data subnets, both public and private also have an A and B versions on different AZs (A is one AZ, B is a different AZ). So you have public subnet A, public subnet B, private subnet A, private subnet B, for each VPC. 
+Cloudformation templates to set up a dev-staging and a production network in AWS. Both dev-staging and production have public server subnets and private data subnets, both public and private also have an A and B versions on different AZs (A is one AZ, B is a different AZ). So you have public subnet A, public subnet B, private subnet A, private subnet B, for each VPC. For each VPC there's also in spare network in each AZ (Spare A and Spare B) for unforeseen adjustments in the future.
 
 <p align="center">
   <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/architecture.png" width="540"/>
-  <p align="center">So, an empty pair of VPCs with 4 subnets each (2 public and 2 private)</p>
+  <p align="center">So, an empty pair of VPCs with 4 subnets each (2 public and 2 private). Spare subnets are not shown.</p>
 </p>
 
 This is a sample architecture that I recently set up with this template:
@@ -13,7 +13,7 @@ This is a sample architecture that I recently set up with this template:
   <p align="center">The EC2s in autoscaling are replicated across two different AZs. The DB is MultiAZ as well.</p>
 </p>
 
-The CIDR reanges are from... I can't remember I did this over a year ago, but you can look them up in the templates! (there's plenty of IPs)
+The CIDR reanges are from... I can't remember I did this over a year ago, but there's over 4k per subnet. prod and dev-staging do not have repeating IPs. 
 
 
 ## Instructions
@@ -26,6 +26,13 @@ The CIDR reanges are from... I can't remember I did this over a year ago, but yo
    that allows out ALL TRAFFIC ON ALL PORTS (CloudFormation somehow interprets empty list as let all traffic out).
 	 
 Note you'll need a tunnel (bastion) ec2 to access databases in the private data. That's it. 
+
+If everything went well, you should see the following:
+
+<p align="center">
+  <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/subnets-screenshot.png" width="540"/>
+  <p align="center">Results</p>
+</p>
 
 
 ## Manual Instructions
