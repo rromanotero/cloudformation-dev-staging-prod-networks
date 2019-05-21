@@ -1,4 +1,4 @@
-# cloudformation-dev-staging-prod-networks
+# Cloudformation Dev-Staging and Production VPCs (subnets, Network ACLs, route tables, and security groups)
 Cloudformation templates to set up a dev-staging and a production network in AWS. Both dev-staging and production have public server subnets and private data subnets, both public and private also have an A and B versions on different AZs (A is one AZ, B is a different AZ). So you have public subnet A, public subnet B, private subnet A, private subnet B, for each VPC. 
 
 <p align="center">
