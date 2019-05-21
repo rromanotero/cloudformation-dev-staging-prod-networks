@@ -22,7 +22,8 @@ The CIDR reanges are from... I can't remember I did this over a year ago, but th
 2. cd cloudformation-dev-staging-prod-networks
 2. chmod +x run.sh
 3. ./run.sh (if this fails you can do it manually from CloudFormatoin UI, see Manual Instructions below)
-4. Manually remove the outbond rule from Prod Data Security Group
+4. Add your IP on port 22 to the inbound rules on the server security groups (so you can ssh ec2s).
+5. Manually remove the outbond rule from Prod Data Security Group
    that allows out ALL TRAFFIC ON ALL PORTS (CloudFormation somehow interprets empty list as let all traffic out).
 	 
 Note you'll need a tunnel (bastion) ec2 to access databases in the private data. That's it. 
