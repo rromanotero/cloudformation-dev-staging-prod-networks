@@ -9,7 +9,7 @@ Cloudformation templates to set up a dev-staging and a production network in AWS
 This is a sample architecture that I recently set up with this template:
 
 <p align="center">
-  <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/architecture.png" width="540"/>
+  <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/sample_architecture.png" width="540"/>
   <p align="center">So, an empty pair of networks</p>
 </p>
 
