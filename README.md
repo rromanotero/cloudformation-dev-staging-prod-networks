@@ -10,15 +10,16 @@ This is a sample architecture that I recently set up with this template:
 
 <p align="center">
   <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/sample_architecture.png" width="540"/>
-  <p align="center"></p>
+  <p align="center">The EC2s in autoscaling are replicated across two different AZs. The DB is MultiAZ as well.</p>
 </p>
 
 The CIDR reanges are from... I can't remember I did this over a year ago, but you can look them up in the templates! (there's plenty of IPs)
 
 
 ## Instructions
-1. git clone this repo and cd into it
-1. Edit the region on the template. It's currently set up to ca-central
+(If needed edit the region on the template. It's currently set up to ca-central)
+1. git clone https://github.com/rromanotero/cloudformation-dev-staging-prod-networks.git
+2. cd cloudformation-dev-staging-prod-networks
 2. chmod +x run.sh
 3. ./run.sh (if this fails you can do it manually from CloudFormatoin UI, see Manual Instructions below)
 4. Manually remove the outbond rule from Prod Data Security Group
