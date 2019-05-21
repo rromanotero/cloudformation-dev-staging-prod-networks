@@ -25,3 +25,9 @@ Note you'll need a tunnel (bastion) ec2 to access databases in the private data.
 
 You will end up with something looking lik this:
 
+<p align="center">
+  <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/architecture.png" width="290"/>
+  <p align="center">So, an empty pair of networks</p>
+</p>
+
+
