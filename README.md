@@ -31,8 +31,21 @@ If everything went well, you should see the following:
 
 <p align="center">
   <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/subnet-screenshot.png" width="840"/>
-  <p align="center">Results</p>
+  <p align="center">Subnets</p>
 </p>
+
+Data subnets can only be accessed from server subnets of the same VPC.
+
+<p align="center">
+  <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/sec-group-screenshot.png" width="840"/>
+  <p align="center">data sec group</p>
+</p>
+
+<p align="center">
+  <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/route-table-screenshot.png" width="840"/>
+  <p align="center">data route table</p>
+</p>
+
 
 
 ## Manual Instructions
@@ -55,3 +68,5 @@ If everything went well, you should see the following:
 5. Repeat step 4 for dev-staging
 
 
+## TODO
+Need to add a NAT Gateway. Maybe?
