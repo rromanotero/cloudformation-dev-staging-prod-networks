@@ -23,15 +23,15 @@ The CIDR reanges are from... I can't remember I did this over a year ago, but yo
 1. Edit the region on the template. It's curently set up to ca-central
 2. Bring up all the stacks in /prod in this order and WITH THIS SAME STACK NAMES:
 
-   a) prod-network
-   b) prod-route-table
-   c) prod-network-acl
-   d) prod-network-acl-server-ingress-rules
-   e) prod-network-acl-server-egress-rules
-   f) prod-network-acl-data-ingress-rules
-   g) prod-network-acl-data-egress-rules
-   h) prod-security-group-server
-   i) prod-security-group-data
+   - prod-network
+   - prod-route-table
+   - prod-network-acl
+   - prod-network-acl-server-ingress-rules
+   - prod-network-acl-server-egress-rules
+   - prod-network-acl-data-ingress-rules
+   - prod-network-acl-data-egress-rules
+   - prod-security-group-server
+   - prod-security-group-data
 
 4. Update/replace prod-security-group-server with prod-security-group-server-UPDATE
    (prod-security-group-server-UPDATE has one extra rule that references prod-security-group-data. We do it this way to avoid cyclic dependencies)
