@@ -42,7 +42,7 @@ Data subnets can only be accessed from server subnets of the same VPC.
 </p>
 
 <p align="center">
-  <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/route-table-screenshot.png" width="840"/>
+  <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/route-table-screenshot.png" width="640"/>
   <p align="center">data route table</p>
 </p>
 
