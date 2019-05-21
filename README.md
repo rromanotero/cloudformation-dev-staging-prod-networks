@@ -30,7 +30,7 @@ Note you'll need a tunnel (bastion) ec2 to access databases in the private data.
 If everything went well, you should see the following:
 
 <p align="center">
-  <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/subnet-screenshot.png" width="540"/>
+  <img src="https://github.com/rromanotero/cloudformation-dev-staging-prod-networks/blob/master/subnet-screenshot.png" width="840"/>
   <p align="center">Results</p>
 </p>
 
