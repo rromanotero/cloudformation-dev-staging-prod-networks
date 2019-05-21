@@ -11,11 +11,11 @@ aws cloudformation deploy --template prod/prod-security-group-server.json --stac
 aws cloudformation deploy --template prod/prod-security-group-data.json --stack-name prod-security-group-data
 
 echo ""
-echo "Update Prod Sec Group (because of cyclic dependencies)"
-echo "================="
+echo "Update Prod Server Sec Group (because of cyclic dependencies)"
+echo "============================"
 aws cloudformation deploy --template prod/prod-security-group-server-UPDATE.json --stack-name prod-security-group-server
 
-""
+echo ""
 echo "DevStaging Stacks"
 echo "================="
 aws cloudformation deploy --template dev-staging/dev-staging-network.json --stack-name dev-staging-network
@@ -29,6 +29,6 @@ aws cloudformation deploy --template dev-staging/dev-staging-security-group-serv
 aws cloudformation deploy --template dev-staging/dev-staging-security-group-data.json --stack-name dev-staging-security-group-data
 
 echo ""
-echo "Update Prod Sec Group (because of cyclic dependencies)"
-echo "================="
+echo "Update Dev Staging Server Sec Group (because of cyclic dependencies)"
+echo "==================================="
 aws cloudformation deploy --template dev-staging/dev-staging-security-group-server-UPDATE.json --stack-name dev-staging-security-group-server
