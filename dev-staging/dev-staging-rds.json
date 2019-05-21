@@ -1,0 +1,67 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Description" : "DevStaging RDS Stack (Set up snapshot before launching)",
+
+  "Resources" : {
+      "DevDatabase": {
+          "Type": "AWS::RDS::DBInstance",
+          "Properties": {
+            "DBSnapshotIdentifier" : "arn:aws:rds:ca-central-1:570034927297:snapshot:rds:edsn-prod-2018-11-22-11-03",
+            "DBInstanceClass": "db.t2.small",
+            "DBInstanceIdentifier" : "edsn-dev",
+            "Engine" : "postgres",
+            "EngineVersion" : "9.6.6",
+            "PubliclyAccessible": "false",
+            "AllocatedStorage" : "300",
+            "MultiAZ" : "false",
+
+            "BackupRetentionPeriod" : "35",
+            "DeleteAutomatedBackups" : "false",
+            "DeletionProtection" : "true",
+
+            "PreferredBackupWindow" : "11:00-13:00",
+            "PreferredMaintenanceWindow" : "sun:05:07-sun:05:37",
+            "AutoMinorVersionUpgrade" : "false",
+
+            "DBSubnetGroupName" : "dev-staging-db-subnet-group",
+            "VPCSecurityGroups" : [ { "Fn::ImportValue" : {"Fn::Sub" : "dev-staging-security-group-data-DevStagingDataSecurityGroup"} }],
+
+            "Tags" : [ {"Key" : "Name", "Value" : "Dev Database"} ]
+      }
+  },
+
+         "DevDatabase": {
+          "Type": "AWS::RDS::DBInstance",
+          "Properties": {
+            "DBSnapshotIdentifier" : "arn:aws:rds:ca-central-1:570034927297:snapshot:rds:edsn-dev-2018-12-03-11-13",
+            "DBInstanceClass": "db.t2.small",
+            "DBInstanceIdentifier" : "edsn-staging",
+            "Engine" : "postgres",
+            "EngineVersion" : "9.6.6",
+            "PubliclyAccessible": "false",
+            "AllocatedStorage" : "300",
+            "MultiAZ" : "false",
+
+            "BackupRetentionPeriod" : "35",
+            "DeleteAutomatedBackups" : "false",
+            "DeletionProtection" : "true",
+
+            "PreferredBackupWindow" : "11:00-13:00",
+            "PreferredMaintenanceWindow" : "sun:05:07-sun:05:37",
+            "AutoMinorVersionUpgrade" : "false",
+
+            "DBSubnetGroupName" : "dev-staging-db-subnet-group",
+            "VPCSecurityGroups" : [ { "Fn::ImportValue" : {"Fn::Sub" : "dev-staging-security-group-data-DevStagingDataSecurityGroup"} }],
+
+            "Tags" : [ {"Key" : "Name", "Value" : "Staging Database"} ]
+      }
+  }
+
+   },
+
+   "Outputs" : {
+
+
+    }
+
+}

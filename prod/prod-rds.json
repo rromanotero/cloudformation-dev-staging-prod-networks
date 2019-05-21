@@ -1,0 +1,39 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Description" : "Prod RDS Stack (Set up snapshot before launching)",
+
+  "Resources" : {
+      "ProdDatabase": {
+          "Type": "AWS::RDS::DBInstance",
+          "Properties": {
+            "DBSnapshotIdentifier" : "arn:aws:rds:ca-central-1:570034927297:snapshot:edsn-prod-backup-nov-20",
+            "DBInstanceClass": "db.t2.xlarge",
+            "DBInstanceIdentifier" : "edsn-prod",
+            "Engine" : "postgres",
+            "EngineVersion" : "9.6.6",
+            "PubliclyAccessible": "false",
+            "AllocatedStorage" : "300",
+            "MultiAZ" : "true",
+
+            "BackupRetentionPeriod" : "35",
+            "DeleteAutomatedBackups" : "false",
+            "DeletionProtection" : "true",
+
+            "PreferredBackupWindow" : "11:00-13:00",
+            "PreferredMaintenanceWindow" : "sun:05:07-sun:05:37",
+            "AutoMinorVersionUpgrade" : "false",
+
+            "DBSubnetGroupName" : "prod-db-subnet-group",
+            "VPCSecurityGroups" : [ { "Fn::ImportValue" : {"Fn::Sub" : "prod-security-group-data-ProdDataSecurityGroup"} }],
+
+            "Tags" : [ {"Key" : "Name", "Value" : "Prod Database"} ]
+      }
+  }
+   },
+
+   "Outputs" : {
+
+
+    }
+
+}

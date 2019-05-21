@@ -1,0 +1,58 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Description" : "Prod EC2 Stack (Set up ImageID and KeyName befor launching)",
+
+  "Resources" : {
+        "ProdBase" : {
+             "Type" : "AWS::EC2::Instance",
+             "Properties" : {
+                  "InstanceType" : "t2.medium",
+                  "ImageId" : "ami-060bfab7e891e32aa",
+                  "KeyName" : "EDSNProd",
+                  "SubnetId": { "Fn::ImportValue" : {"Fn::Sub" : "prod-network-ProdServerSubnetB"} },
+                  "SecurityGroupIds" : [ { "Fn::ImportValue" : {"Fn::Sub" : "prod-security-group-server-ProdServerSecurityGroup"} }],
+                  "Tags" : [ {"Key" : "Name", "Value" : "Prod Base"} ],
+                  "BlockDeviceMappings" : [
+                         {
+                            "DeviceName" : "/dev/sda1",
+                            "Ebs" :
+                                {
+                                   "VolumeType" : "gp2",
+                                   "DeleteOnTermination" : "true",
+                                   "VolumeSize" : "20"
+                                }
+                         }
+                  ]
+             }
+        },
+
+        "ProdTunnel" : {
+             "Type" : "AWS::EC2::Instance",
+             "Properties" : {
+                  "InstanceType" : "t2.micro",
+                  "ImageId" : "ami-0427e8367e3770df1",
+                  "KeyName" : "EDSNProdTunnel",
+                  "SubnetId": { "Fn::ImportValue" : {"Fn::Sub" : "prod-network-ProdServerSubnetA"} },
+                  "SecurityGroupIds" : [ { "Fn::ImportValue" : {"Fn::Sub" : "prod-security-group-server-ProdServerSecurityGroup"} }],
+                  "Tags" : [ {"Key" : "Name", "Value" : "Prod Tunnel"} ],
+                  "BlockDeviceMappings" : [
+                         {
+                            "DeviceName" : "/dev/sda1",
+                            "Ebs" :
+                                {
+                                   "VolumeType" : "gp2",
+                                   "DeleteOnTermination" : "true",
+                                   "VolumeSize" : "20"
+                                }
+                         }
+                  ]
+             }
+        }
+   },
+
+   "Outputs" : {
+
+
+    }
+
+}

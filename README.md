@@ -1,2 +1,27 @@
 # cloudformation-dev-staging-prod-networks
-Cloudformation templates to set up a dev, staging, and production networks in AWS
+Cloudformation templates to set up a dev, staging, and production networks in AWS. The CIDR reanges are from... I can't remember I did this over a year ago, but you can look them up in the templates!
+
+## Instructions
+1. Edit the region on the template. It's curently set up to ca-central
+2. Bring up all the stacks in /prod in this order and WITH THIS SAME STACK NAMES:
+
+   a) prod-network
+   b) prod-route-table
+   c) prod-network-acl
+   d) prod-network-acl-server-ingress-rules
+   e) prod-network-acl-server-egress-rules
+   f) prod-network-acl-data-ingress-rules
+   g) prod-network-acl-data-egress-rules
+   h) prod-security-group-server
+   i) prod-security-group-data
+
+4. Update/replace prod-security-group-server with prod-security-group-server-UPDATE
+   (prod-security-group-server-UPDATE has one extra rule that references prod-security-group-data. We do it this way to avoid cyclic dependencies)
+
+3. Manually remove the outbond rule from Prod Data Security Group
+   that allows out ALL TRAFFIC ON ALL PORTS (CloudFormation somehow interprets empty list as let all traffic out).
+	 
+Note you'll need a tunnel (bastion) ec2 to access databases in the private data. That's it. 
+
+You will end up with something looking lik this:
+
